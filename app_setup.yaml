@@ -1,0 +1,34 @@
+
+- name: Install htop
+  apt: name=htop
+
+# - name: Copy desktop launcher
+#   template:
+#     src: converging.desktop
+#     dest: "/home/{{ custom_username }}/Desktop/{{ item.name }}.desktop"
+#     owner: "{{custom_username}}"
+#     group: users
+#     mode: "0744"
+#   loop: "{{ docker_image_names }}"
+
+# - name: Ensure docker daemon is running
+#   service:
+#     name: docker
+#     state: started
+
+# - name: Make desktop launcher Trusted
+#   shell: dbus-launch gio set "/home/{{ custom_username }}/Desktop/{{ item.name }}.desktop" "metadata::trusted" true
+#   become_user: "{{custom_username}}"
+#   loop: "{{ docker_image_names }}"
+
+
+# # - name: Pull default App Docker image
+# #   shell: docker pull {{docker_registry}}/{{docker_image_name}}
+# #   become_user: "{{custom_username}}"
+
+# - name: Pull default App Docker image
+#   docker_image:
+#     name: "{{docker_registry}}/{{item.image}}"
+#     source: pull
+#   become_user: "{{custom_username}}"
+#   loop: "{{ docker_image_names }}"

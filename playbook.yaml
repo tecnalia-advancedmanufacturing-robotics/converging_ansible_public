@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  become: true
+
+  vars_files:
+    - vars.yaml
+
+  tasks:
+    - import_tasks: app_setup.yaml

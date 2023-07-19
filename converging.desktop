@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Exec=rocker --x11 --home --user {{docker_registry}}/{{item.image}}
+Name={{item.name}}
+GenericName={{item.name}}
+Comment={{item.name}}
+Terminal=true
+Type=Application
+Categories=Science;Robotics;
