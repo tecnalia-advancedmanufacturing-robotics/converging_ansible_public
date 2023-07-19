@@ -1,7 +1,7 @@
 - name: Copy desktop launcher
   template:
     src: converging.desktop
-    dest: "/home/{{ ansible_user_id }}/Desktop/{{ item.name }}.desktop"
+    dest: "'{{ lookup('ansible.builtin.env', 'HOME') }}/Desktop/{{ item.name }}.desktop"
     owner: "{{custom_username}}"
     group: users
     mode: "0744"
@@ -13,7 +13,7 @@
     state: started
 
 - name: Make desktop launcher Trusted
-  shell: dbus-launch gio set "/home/{{ ansible_user_id }}/Desktop/{{ item.name }}.desktop" "metadata::trusted" true
+  shell: dbus-launch gio set "'{{ lookup('ansible.builtin.env', 'HOME') }}/Desktop/{{ item.name }}.desktop" "metadata::trusted" true
   become_user: "{{custom_username}}"
   loop: "{{ docker_image_names }}"
 
