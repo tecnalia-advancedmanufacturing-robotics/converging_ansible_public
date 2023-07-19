@@ -2,7 +2,7 @@
   template:
     src: converging.desktop
     dest: "~/Desktop/{{ item.name }}.desktop"
-    # owner: "{{custom_username}}"
+    owner: "{{custom_username}}"
     group: users
     mode: "0744"
   loop: "{{ docker_image_names }}"
@@ -14,7 +14,7 @@
 
 - name: Make desktop launcher Trusted
   shell: dbus-launch gio set "~/Desktop/{{ item.name }}.desktop" "metadata::trusted" true
-  # become_user: "{{custom_username}}"
+  become_user: "{{custom_username}}"
   loop: "{{ docker_image_names }}"
 
 
@@ -22,5 +22,5 @@
   docker_image:
     name: "{{docker_registry}}/{{item.image}}"
     source: pull
-  # become_user: "{{custom_username}}"
+  become_user: "{{custom_username}}"
   loop: "{{ docker_image_names }}"
