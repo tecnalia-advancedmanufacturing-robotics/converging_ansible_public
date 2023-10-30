@@ -4,3 +4,4 @@ docker_image_names:
   # - {image: "converging_workcell:noetic", name: "Converging Workcell"}
   - {image: "force_record:noetic", name: "Force Recording"}
   - {image: "force_visualize:noetic", name: "Force Visualize"}
+  - {image: "converging_noether_demo:noetic", name: "Converging Noether Demo"}
