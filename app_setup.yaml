@@ -32,3 +32,8 @@
     source: pull
   become_user: "{{custom_username}}"
   loop: "{{ docker_image_names }}"
+
+- name: Run the image with rocker to generate cache and speed up first run
+  shell: screen rocker --x11 --user {{docker_registry}}/{{item.image}} echo First run of app container
+  # become_user: "{{custom_username}}"
+  loop: "{{ docker_image_names }}"
