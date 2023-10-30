@@ -1,0 +1,6 @@
+ur_robot_ip: '192.168.0.200'
+ur_robot_type: 'ur16e'
+rosbag_output_path: '/tmp'
+rosbag_output_prefix: 'ur_wrench'
+rosbag_output_max_size_mb: 1000
+show_rqt: True

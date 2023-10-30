@@ -7,6 +7,14 @@
     mode: "0744"
   loop: "{{ docker_image_names }}"
 
+- name: Copy config.yaml
+  copy:
+    src: ur_force_record_config.yaml
+    dest: "/home/{{ custom_username }}/ur_force_record_config.yaml"
+    owner: "{{custom_username}}"
+    group: users
+    force: no
+
 - name: Ensure docker daemon is running
   service:
     name: docker
