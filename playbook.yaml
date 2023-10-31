@@ -25,4 +25,5 @@
       loop: "{{ docker_image_names }}"
 
     - name: Refresh desktop
-      shell: busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Refreshing desktop…", global.context)'
+      shell: killall -3 gnome-shell
+
