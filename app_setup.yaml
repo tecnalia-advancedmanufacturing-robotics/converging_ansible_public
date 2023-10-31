@@ -1,13 +1,13 @@
-- name: Pull default App Docker image
+- name: Pull {{item.image}}
   docker_image:
     name: "{{docker_registry}}/{{item.image}}"
     source: pull
   become_user: "{{custom_username}}"
 
-- name: Run the image with rocker to generate cache and speed up first run
+- name: Run {{item.image}} with rocker to generate cache and speed up first run
   shell: rocker --x11 --user {{item.rocker_args}} {{docker_registry}}/{{item.image}} echo First run of app container
 
-- name: Copy desktop launcher
+- name: Copy {{ item.name }}.desktop
   template:
     src: converging.desktop
     dest: "/home/{{ custom_username }}/Desktop/{{ item.name }}.desktop"
@@ -15,6 +15,6 @@
     group: users
     mode: "0744"
 
-- name: Make desktop launcher Trusted
+- name: Make {{ item.name }}.desktop Trusted
   shell: dbus-launch gio set "/home/{{ custom_username }}/Desktop/{{ item.name }}.desktop" "metadata::trusted" true
   become_user: "{{custom_username}}"
