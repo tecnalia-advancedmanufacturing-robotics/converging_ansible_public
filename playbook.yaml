@@ -23,3 +23,6 @@
 
     - include_tasks: app_setup.yaml
       loop: "{{ docker_image_names }}"
+
+    - name: Refresh desktop
+      shell: busctl --user call org.gnome.Shell /org/gnome/Shell org.gnome.Shell Eval s 'Meta.restart("Refreshing desktop…", global.context)'
