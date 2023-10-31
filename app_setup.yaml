@@ -18,4 +18,4 @@
   become_user: "{{custom_username}}"
 
 - name: Run the image with rocker to generate cache and speed up first run
-  shell: screen rocker --x11 --user {{docker_registry}}/{{item.image}} echo First run of app container
+  shell: rocker --x11 --user {{item.rocker_args}} {{docker_registry}}/{{item.image}} echo First run of app container
