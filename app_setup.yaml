@@ -5,25 +5,10 @@
     owner: "{{custom_username}}"
     group: users
     mode: "0744"
-  loop: "{{ docker_image_names }}"
-
-- name: Copy config.yaml
-  copy:
-    src: ur_force_record_config.yaml
-    dest: "/home/{{ custom_username }}/Desktop/ur_force_record_config.yaml"
-    owner: "{{custom_username}}"
-    group: users
-    force: no
-
-- name: Ensure docker daemon is running
-  service:
-    name: docker
-    state: started
 
 - name: Make desktop launcher Trusted
   shell: dbus-launch gio set "/home/{{ custom_username }}/Desktop/{{ item.name }}.desktop" "metadata::trusted" true
   become_user: "{{custom_username}}"
-  loop: "{{ docker_image_names }}"
 
 
 - name: Pull default App Docker image
@@ -31,9 +16,6 @@
     name: "{{docker_registry}}/{{item.image}}"
     source: pull
   become_user: "{{custom_username}}"
-  loop: "{{ docker_image_names }}"
 
 - name: Run the image with rocker to generate cache and speed up first run
   shell: screen rocker --x11 --user {{docker_registry}}/{{item.image}} echo First run of app container
-  # become_user: "{{custom_username}}"
-  loop: "{{ docker_image_names }}"
