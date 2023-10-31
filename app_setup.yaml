@@ -3,8 +3,6 @@
     name: "{{docker_registry}}/{{item.image}}"
     source: pull
   become_user: "{{custom_username}}"
-  async: 450
-  poll: 5
 
 - name: Run {{item.image}} with rocker to generate cache and speed up first run
   shell: rocker --x11 --user {{item.rocker_args}} {{docker_registry}}/{{item.image}} echo First run of app container
