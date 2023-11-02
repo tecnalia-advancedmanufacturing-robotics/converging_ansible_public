@@ -7,6 +7,11 @@
     - vars.yaml
 
   tasks:
+    - name: Adding user to dialout
+      user:
+        name: "{{ custom_username }}"
+        groups: dialout
+        append: yes
 
     - name: Copy config.yaml
       copy:
