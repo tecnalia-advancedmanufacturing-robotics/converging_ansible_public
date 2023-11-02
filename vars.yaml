@@ -4,4 +4,4 @@ docker_image_names:
   # - {image: "converging_workcell:noetic", name: "Converging Workcell"}
   - {image: "force_record:noetic", name: "Force Recording", rocker_args: '--env="UR_FORCE_RECORD_CONFIG_FILE=/home/ford/Desktop/ur_force_record_config.yaml"'}
   - {image: "force_visualize:noetic", name: "Force Visualize", rocker_args: ""}
-  - {image: "converging_noether_demo:noetic", name: "Converging Noether Demo", rocker_args: "--user-preserve-groups=dialout"}
+  - {image: "converging_noether_demo:noetic", name: "Converging Noether Demo", rocker_args: "--user-preserve-groups=dialout --privileged"}
