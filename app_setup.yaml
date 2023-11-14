@@ -1,4 +1,4 @@
-- name: Pull {{item.image}}
+- name: Pull {{docker_registry}}/{{item.image}}
   docker_image:
     name: "{{docker_registry}}/{{item.image}}"
     source: pull
