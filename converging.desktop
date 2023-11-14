@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.0
-Exec=bash -c "rocker --x11 --home --user {{item.rocker_args}} {{docker_registry}}/{{item.image}} ${ENTRY_COMMAND} {{item.command_args}}"
+Exec=bash -c "rocker --x11 --home --user {{item.rocker_args}} {{docker_registry}}/{{item.image}} "${ENTRY_COMMAND} {{item.command_args}}""
 Name={{item.name}}
 GenericName={{item.name}}
 Comment={{item.name}}
