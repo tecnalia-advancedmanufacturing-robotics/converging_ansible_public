@@ -14,4 +14,4 @@ docker_image_names:
   - image: converging_noether_demo:noetic
     name: Converging Noether Demo
     rocker_args: --user-preserve-groups=dialout --privileged
-    command_args: "version:=ford"
+    command_args: version:=ford ur_ip:=192.168.99.9 mesh_position:="-0.37\ 0.016\ -0.109" mesh_rotation:="0.0\ 0.0\ 90.0"
