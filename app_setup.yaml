@@ -20,15 +20,3 @@
 - name: Make '{{ item.name }}.desktop' Trusted
   shell: gio set "/home/{{ custom_username }}/Desktop/{{ item.name }}.desktop" "metadata::trusted" true
   become_user: "{{custom_username}}"
-
-- name: Create file to refresh desktop
-  file:
-    path: "/home/{{ custom_username }}/Desktop/refresh.desktop"
-    state: touch
-    force: yes
-
-- name: Remove file to refresh desktop
-  file:
-    path: "/home/{{ custom_username }}/Desktop/refresh.desktop"
-    state: absent
-    force: yes
