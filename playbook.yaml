@@ -28,11 +28,3 @@
 
     - include_tasks: app_setup.yaml
       loop: "{{ docker_image_names }}"
-
-    # - name: Refresh desktop
-    #   shell: killall -3 gnome-shell
-
-    - name: Make '{{ item.name }}.desktop' Trusted
-      shell: gio set "/home/{{ custom_username }}/Desktop/{{ item.name }}.desktop" "metadata::trusted" true
-      become_user: "{{custom_username}}"
-      loop: "{{ docker_image_names }}"
