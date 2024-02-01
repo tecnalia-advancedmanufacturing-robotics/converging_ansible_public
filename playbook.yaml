@@ -29,10 +29,14 @@
     - include_tasks: app_setup.yaml
       loop: "{{ docker_image_names }}"
 
-    - name: Refresh desktop
-      shell: killall -3 gnome-shell
+    - name: Create file to refresh desktop
+      file:
+        path: "/home/{{ custom_username }}/Desktop/refresh.desktop"
+        state: touch
+        force: yes
 
-    - name: Make '{{ item.name }}.desktop' Trusted
-      shell: dbus-launch gio set "/home/{{ custom_username }}/Desktop/{{ item.name }}.desktop" "metadata::trusted" true
-      become_user: "{{custom_username}}"
-      loop: "{{ docker_image_names }}"
+    - name: Remove file to refresh desktop
+      file:
+        path: "/home/{{ custom_username }}/Desktop/refresh.desktop"
+        state: absent
+        force: yes
