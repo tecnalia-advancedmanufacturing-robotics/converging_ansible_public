@@ -25,3 +25,4 @@ echo -e "${GREEN}Restarting ssh server..."
 systemctl restart sshd
 echo -e "${GREEN}Allowing ssh through firewall..."
 ufw allow ssh
+echo -e "${GREEN}Done! your ip is $(host myip.opendns.com resolver1.opendns.com | grep "myip.opendns.com has" | awk '{print $4}')"
