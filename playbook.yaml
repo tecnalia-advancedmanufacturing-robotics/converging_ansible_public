@@ -16,7 +16,7 @@
     - name: Copy config.yaml
       copy:
         src: ur_force_record_config.yaml
-        dest: "/home/{{ custom_username }}/Desktop/ur_force_record_config.yaml"
+        dest: "{{ custom_desktop }}/ur_force_record_config.yaml"
         owner: "{{custom_username}}"
         group: users
         force: no
@@ -33,6 +33,6 @@
       shell: killall -3 gnome-shell
 
     - name: Make '{{ item.name }}.desktop' Trusted
-      shell: dbus-launch gio set "/home/{{ custom_username }}/Desktop/{{ item.name }}.desktop" "metadata::trusted" true
+      shell: dbus-launch gio set "{{ custom_desktop }}/{{ item.name }}.desktop" "metadata::trusted" true
       become_user: "{{custom_username}}"
       loop: "{{ docker_image_names }}"
