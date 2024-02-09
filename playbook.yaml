@@ -16,7 +16,7 @@
     - name: Copy config.yaml
       copy:
         src: ur_force_record_config.yaml
-        dest: "/home/{{ custom_username }}/Desktop/ur_force_record_config.yaml"
+        dest: "{{ custom_desktop }}/ur_force_record_config.yaml"
         owner: "{{custom_username}}"
         group: users
         force: no
@@ -31,12 +31,12 @@
 
     - name: Create file to refresh desktop
       file:
-        path: "/home/{{ custom_username }}/Desktop/refresh.desktop"
+        path: "{{ custom_desktop }}/refresh.desktop"
         state: touch
         force: yes
 
     - name: Remove file to refresh desktop
       file:
-        path: "/home/{{ custom_username }}/Desktop/refresh.desktop"
+        path: "{{ custom_desktop }}/refresh.desktop"
         state: absent
         force: yes

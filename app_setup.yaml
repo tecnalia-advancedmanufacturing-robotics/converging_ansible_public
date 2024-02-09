@@ -12,12 +12,12 @@
 - name: Copy '{{ item.name }}.desktop'
   template:
     src: converging.desktop
-    dest: "/home/{{ custom_username }}/Desktop/{{ item.name }}.desktop"
+    dest: "{{ custom_desktop }}/{{ item.name }}.desktop"
     owner: "{{custom_username}}"
     group: users
     mode: "0744"
     force: no
 
 - name: Make '{{ item.name }}.desktop' Trusted
-  shell: gio set "/home/{{ custom_username }}/Desktop/{{ item.name }}.desktop" "metadata::trusted" true
+  shell: gio set "{{ custom_desktop }}/{{ item.name }}.desktop" "metadata::trusted" true
   become_user: "{{custom_username}}"
