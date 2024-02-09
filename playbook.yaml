@@ -13,6 +13,12 @@
         groups: dialout
         append: yes
 
+    - name: Delete content & directory
+      ansible.builtin.file:
+        state: absent
+        path: /home/{{custom_username}}/workspace
+
+
     - name: Copy config.yaml
       copy:
         src: ur_force_record_config.yaml
