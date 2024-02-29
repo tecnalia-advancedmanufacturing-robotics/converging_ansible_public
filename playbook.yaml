@@ -31,18 +31,22 @@
       service:
         name: docker
         state: started
+      tags: [ docker ]
 
     - include_tasks: app_setup.yaml
       loop: "{{ docker_image_names }}"
+      tags: [ apps ]
 
     - name: Create file to refresh desktop
       file:
         path: "{{ custom_desktop }}/refresh.desktop"
         state: touch
         force: yes
+      tags: [ desktop, trusted ]
 
     - name: Remove file to refresh desktop
       file:
         path: "{{ custom_desktop }}/refresh.desktop"
         state: absent
         force: yes
+      tags: [ desktop, trusted ]
