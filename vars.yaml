@@ -12,7 +12,7 @@ docker_image_names:
   #   rocker_args: ""
   #   command_args: ""
 
-  - image: converging_noether_demo:noetic
-    name: Converging Noether Demo
+  - image: converging_noether_demo:main
+    name: Converging Noether New Demo
     rocker_args: --network=host --user-preserve-groups=dialout
     command_args: version:=ford ur_ip:=192.168.99.9 mesh_frame_parent:=base_link_inertia mesh_position:=-.780,.004,-0.069 mesh_rotation:=0,0,0 use_sim:=false mesh_path:={{custom_desktop}}/meshes

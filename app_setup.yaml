@@ -4,10 +4,12 @@
     source: pull
     force_source: true
   become_user: "{{custom_username}}"
+  tags: [ docker, pull ]
 
 - name: Run {{item.image}} with rocker to generate cache and speed up first run
   shell: rocker --x11 --user {{item.rocker_args}} {{docker_registry}}/{{item.image}} echo First run of app container
   become_user: "{{custom_username}}"
+  tags: [ docker, rocker ]
 
 - name: Copy '{{ item.name }}.desktop'
   template:
@@ -17,7 +19,9 @@
     group: users
     mode: "0744"
     force: no
+  tags: [ desktop ]
 
 - name: Make '{{ item.name }}.desktop' Trusted
   shell: gio set "{{ custom_desktop }}/{{ item.name }}.desktop" "metadata::trusted" true
   become_user: "{{custom_username}}"
+  tags: [ desktop, trusted ]
